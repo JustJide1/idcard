@@ -145,7 +145,14 @@
   function previousPhoto() {
   if (studentIndex === 0) {
     studentIndex = studentDataBase.length - 1;
-
+  document.getElementById("userName").innerHTML =
+    studentDataBase[studentIndex].fullname;
+  document.getElementById("userCourse").innerHTML =
+    studentDataBase[studentIndex].course;
+  document.getElementById("userId").innerHTML =
+    studentDataBase[studentIndex].id;
+  document.getElementById("userPfp").src =
+    studentDataBase[studentIndex].photo;
   } else if (studentIndex > 0) {
     studentIndex--; 
   }
