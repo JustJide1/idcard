@@ -17,12 +17,13 @@
 
       main {
         margin: 0 auto;
-        background-color: aqua;
-        width: 45vw;
+        /* background-color: aqua; */
+        width: 40vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 75vh;
       }
       .mainLogo img {
         width: 85px;
@@ -31,8 +32,12 @@
       #userPhoto {
         width: 50%;
         display: flex;
-
+        align-items: center;
         justify-content: center;
+      }
+      #userPhoto button {
+        height: 30px;
+        text-align: center;
       }
 
       /* #userPhoto button { */
@@ -59,9 +64,9 @@
       <p>STUDENT</p>
 
       <div id="userPhoto">
-        <button onclick="previousPhoto()">p</button>
+        <button onclick="previousPhoto()">priv</button>
         <img src="mikasa.jpg" alt="" id="userPfp" />
-        <button onclick="nextPhoto()">n</button>
+        <button onclick="nextPhoto()">next</button>
       </div>
 
       <div id="userInfo">
@@ -143,27 +148,27 @@
   }
 
   function previousPhoto() {
-  if (studentIndex === 0) {
-    studentIndex = studentDataBase.length - 1;
-  document.getElementById("userName").innerHTML =
-    studentDataBase[studentIndex].fullname;
-  document.getElementById("userCourse").innerHTML =
-    studentDataBase[studentIndex].course;
-  document.getElementById("userId").innerHTML =
-    studentDataBase[studentIndex].id;
-  document.getElementById("userPfp").src =
-    studentDataBase[studentIndex].photo;
-  } else if (studentIndex > 0) {
-    studentIndex--; 
+    if (studentIndex === 0) {
+      studentIndex = studentDataBase.length - 1;
+      document.getElementById("userName").innerHTML =
+        studentDataBase[studentIndex].fullname;
+      document.getElementById("userCourse").innerHTML =
+        studentDataBase[studentIndex].course;
+      document.getElementById("userId").innerHTML =
+        studentDataBase[studentIndex].id;
+      document.getElementById("userPfp").src =
+        studentDataBase[studentIndex].photo;
+    } else if (studentIndex > 0) {
+      studentIndex--;
+    }
+    document.getElementById("userName").innerHTML =
+      studentDataBase[studentIndex].fullname;
+    document.getElementById("userCourse").innerHTML =
+      studentDataBase[studentIndex].course;
+    document.getElementById("userId").innerHTML =
+      studentDataBase[studentIndex].id;
+    document.getElementById("userPfp").src =
+      studentDataBase[studentIndex].photo;
   }
-  document.getElementById("userName").innerHTML =
-    studentDataBase[studentIndex].fullname;
-  document.getElementById("userCourse").innerHTML =
-    studentDataBase[studentIndex].course;
-  document.getElementById("userId").innerHTML =
-    studentDataBase[studentIndex].id;
-  document.getElementById("userPfp").src =
-    studentDataBase[studentIndex].photo;
-}
-  }
+  // }
 </script>
