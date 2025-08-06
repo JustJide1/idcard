@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: brown;
+      }
+
+      main {
+        margin: 0 auto;
+        background-color: aqua;
+        width: 45vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .mainLogo img {
+        width: 85px;
+      }
+
+      #userPhoto {
+        width: 50%;
+        display: flex;
+
+        justify-content: center;
+      }
+
+      /* #userPhoto button { */
+      /* background-color: transparent; */
+      /* border: none; */
+      /* } */
+
+      #userPhoto img {
+        width: 40%;
+        border-radius: 50%;
+      }
+
+      #userInfo {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mainLogo"><img src="SQILOGO.png" alt="" /></div>
+
+      <h3>SQI COLLEGE OF ICT</h3>
+
+      <p>STUDENT</p>
+
+      <div id="userPhoto">
+        <button onclick="previousPhoto()">p</button>
+        <img src="mikasa.jpg" alt="" id="userPfp" />
+        <button onclick="nextPhoto()">n</button>
+      </div>
+
+      <div id="userInfo">
+        <p id="userName">Mikasa Ackerman</p>
+        <p id="userCourse">python</p>
+        <p>Student ID | <span id="userId">240721</span></p>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  let userName = document.getElementById("userName");
+  let userCourse = document.getElementById("userCourse");
+  let userId = document.getElementById("userId");
+  let userPfp = document.getElementById("userPfp");
+
+  let studentDataBase = [
+    {
+      fullname: "Mikasa Ackerman",
+      course: "python",
+      id: "240721",
+      photo: "mikasa.jpg",
+    },
+    {
+      fullname: "Berserk Guts",
+      course: "C#",
+      id: "240722",
+      photo: "berserk.png",
+    },
+    {
+      fullname: "Eren Yeager",
+      course: "C++",
+      id: "240723",
+      photo: "eren.jpg",
+    },
+    {
+      fullname: "Levi Ackerman",
+      course: "C",
+      id: "240724",
+      photo: "levi.webp",
+    },
+    {
+      fullname: "Neighbourhood Hero",
+      course: "Javascript",
+      id: "240725",
+      photo: "spidey.jpg",
+    },
+  ];
+
+  let userObj = {
+    fullname: "Neighbourhood Hero",
+    course: "Javascript",
+    id: "240725",
+    photo: "spidey.jpg",
+  };
+
+  let studentIndex = 0;
+  function nextPhoto() {
+    if (studentIndex < studentDataBase.length - 1) {
+      let next = ++studentIndex;
+      document.getElementById("userName").innerHTML =
+        studentDataBase[next].fullname;
+      document.getElementById("userCourse").innerHTML =
+        studentDataBase[next].course;
+      document.getElementById("userId").innerHTML = studentDataBase[next].id;
+      document.getElementById("userPfp").src = studentDataBase[next].photo;
+      // console.log(next);
+    } else if (studentIndex === studentDataBase.length - 1) {
+      studentIndex = -1;
+      let next = ++studentIndex;
+      document.getElementById("userName").innerHTML =
+        studentDataBase[next].fullname;
+      document.getElementById("userCourse").innerHTML =
+        studentDataBase[next].course;
+      document.getElementById("userId").innerHTML = studentDataBase[next].id;
+      document.getElementById("userPfp").src = studentDataBase[next].photo;
+      return;
+    }
+  }
+
+  function previousPhoto() {
+    // console.log(studentIndex);
+    if (studentIndex > 0) {
+      studentIndex--;
+    } else if (studentIndex === 0) {
+      studentIndex = studentDataBase.length - 1;
+      console.log(studentIndex);
+      // let next = --studentIndex;
+      // next = --studentIndex;
+      // console.log(next);
+      document.getElementById("userName").innerHTML =
+        studentDataBase[studentIndex].fullname;
+      document.getElementById("userCourse").innerHTML =
+        studentDataBase[studentIndex].course;
+      document.getElementById("userId").innerHTML =
+        studentDataBase[studentIndex].id;
+      document.getElementById("userPfp").src =
+        studentDataBase[studentIndex].photo;
+      studentIndex--;
+    }
+  }
+</script>
