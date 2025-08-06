@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/4d116b11ae.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
     <style>
       * {
@@ -12,38 +16,50 @@
       }
 
       body {
-        background-color: brown;
+        background-color: rgb(3, 3, 92);
+        height: 90vh;
+        display: flex;
+        align-items: center;
       }
 
       main {
         margin: 0 auto;
-        /* background-color: aqua; */
-        width: 40vw;
+        background-color: rgb(204, 228, 238);
+        width: 25vw;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 75vh;
-      }
-      .mainLogo img {
-        width: 85px;
+        height: 70vh;
+        gap: 15px;
+        box-shadow: 4px 6px 7px 0px rgba(255, 255, 255, 0.25);
       }
 
+      .mainLogo img {
+        width: 65px;
+      }
+
+      p {
+        background-color: blue;
+        color: skyblue;
+        padding: 3px;
+      }
       #userPhoto {
-        width: 50%;
+        width: 60%;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 40px;
       }
       #userPhoto button {
-        height: 30px;
         text-align: center;
+        background-color: transparent;
+        border: none;
       }
 
-      /* #userPhoto button { */
-      /* background-color: transparent; */
-      /* border: none; */
-      /* } */
+      #userPhoto button i {
+        width: 30px;
+      }
 
       #userPhoto img {
         width: 40%;
@@ -51,7 +67,26 @@
       }
 
       #userInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+      }
+
+      #userCourse {
+        color: crimson;
+      }
+
+      footer {
+        width: 100%;
+        text-align: center;
+      }
+
+      footer p {
+        width: 90%;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -64,16 +99,24 @@
       <p>STUDENT</p>
 
       <div id="userPhoto">
-        <button onclick="previousPhoto()">priv</button>
+        <button onclick="previousPhoto()">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
         <img src="mikasa.jpg" alt="" id="userPfp" />
-        <button onclick="nextPhoto()">next</button>
+        <button onclick="nextPhoto()">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
       </div>
 
       <div id="userInfo">
-        <p id="userName">Mikasa Ackerman</p>
-        <p id="userCourse">python</p>
-        <p>Student ID | <span id="userId">240721</span></p>
+        <span id="userName">Mikasa Ackerman</span>
+        <span id="userCourse">python</span>
+        <span>Student ID | <span id="userId">240721</span></span>
       </div>
+
+      <footer>
+        <p>e d u . s q i . n g</p>
+      </footer>
     </main>
   </body>
 </html>
@@ -124,43 +167,8 @@
   };
 
   let studentIndex = 0;
-  function nextPhoto() {
-    if (studentIndex < studentDataBase.length - 1) {
-      let next = ++studentIndex;
-      document.getElementById("userName").innerHTML =
-        studentDataBase[next].fullname;
-      document.getElementById("userCourse").innerHTML =
-        studentDataBase[next].course;
-      document.getElementById("userId").innerHTML = studentDataBase[next].id;
-      document.getElementById("userPfp").src = studentDataBase[next].photo;
-      // console.log(next);
-    } else if (studentIndex === studentDataBase.length - 1) {
-      studentIndex = -1;
-      let next = ++studentIndex;
-      document.getElementById("userName").innerHTML =
-        studentDataBase[next].fullname;
-      document.getElementById("userCourse").innerHTML =
-        studentDataBase[next].course;
-      document.getElementById("userId").innerHTML = studentDataBase[next].id;
-      document.getElementById("userPfp").src = studentDataBase[next].photo;
-      return;
-    }
-  }
 
-  function previousPhoto() {
-    if (studentIndex === 0) {
-      studentIndex = studentDataBase.length - 1;
-      document.getElementById("userName").innerHTML =
-        studentDataBase[studentIndex].fullname;
-      document.getElementById("userCourse").innerHTML =
-        studentDataBase[studentIndex].course;
-      document.getElementById("userId").innerHTML =
-        studentDataBase[studentIndex].id;
-      document.getElementById("userPfp").src =
-        studentDataBase[studentIndex].photo;
-    } else if (studentIndex > 0) {
-      studentIndex--;
-    }
+  function cardDisplay() {
     document.getElementById("userName").innerHTML =
       studentDataBase[studentIndex].fullname;
     document.getElementById("userCourse").innerHTML =
@@ -169,6 +177,27 @@
       studentDataBase[studentIndex].id;
     document.getElementById("userPfp").src =
       studentDataBase[studentIndex].photo;
+  }
+  function nextPhoto() {
+    if (studentIndex < studentDataBase.length - 1) {
+      studentIndex++;
+      cardDisplay();
+      // console.log(next);
+    } else {
+      studentIndex = -1;
+      studentIndex++;
+      cardDisplay();
+    }
+  }
+
+  function previousPhoto() {
+    if (studentIndex === 0) {
+      studentIndex = studentDataBase.length - 1;
+      cardDisplay();
+    } else {
+      studentIndex--;
+      cardDisplay();
+    }
   }
   // }
 </script>
