@@ -143,24 +143,20 @@
   }
 
   function previousPhoto() {
-    // console.log(studentIndex);
-    if (studentIndex > 0) {
-      studentIndex--;
-    } else if (studentIndex === 0) {
-      studentIndex = studentDataBase.length - 1;
-      console.log(studentIndex);
-      // let next = --studentIndex;
-      // next = --studentIndex;
-      // console.log(next);
-      document.getElementById("userName").innerHTML =
-        studentDataBase[studentIndex].fullname;
-      document.getElementById("userCourse").innerHTML =
-        studentDataBase[studentIndex].course;
-      document.getElementById("userId").innerHTML =
-        studentDataBase[studentIndex].id;
-      document.getElementById("userPfp").src =
-        studentDataBase[studentIndex].photo;
-      studentIndex--;
-    }
+  if (studentIndex === 0) {
+    studentIndex = studentDataBase.length - 1;
+
+  } else if (studentIndex > 0) {
+    studentIndex--; 
+  }
+  document.getElementById("userName").innerHTML =
+    studentDataBase[studentIndex].fullname;
+  document.getElementById("userCourse").innerHTML =
+    studentDataBase[studentIndex].course;
+  document.getElementById("userId").innerHTML =
+    studentDataBase[studentIndex].id;
+  document.getElementById("userPfp").src =
+    studentDataBase[studentIndex].photo;
+}
   }
 </script>
